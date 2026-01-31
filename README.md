@@ -50,9 +50,15 @@ The project is engineered as a multi-layered system, ensuring high stability and
 MEDA is currently in its **MVP (Minimum Viable Product)** phase. While the core AI detection is fully functional, the following architectural expansions are planned:
 
 ### ✉️ Automated Data Synchronization & Mail Integration
-> **[DEVELOPER NOTE]:** 💡 If I were to implement the mail integration, first i'm gonna create a 'completed-exercises.json' in that file there is completed projects with a 'KEY' this key is created when doctor sends exercise mail (the key changes every mail with a algorithm.) keys will created with algoritm
-> algorithm: SQUAT : SQ - AMOUNT like that doctor enters amount of exercise and algorithm created key like that : SQ15|20260101|RANDOMKEY program is reading that key and encoding, What doctor wants? 15 Squat, When it sended? 20260101, how i have to save that exercise? RANDOMKEY
-
+> **[DEVELOPER VISION]:** 💡 To ensure data integrity between the physician and the patient, I designed a **Key-Based Verification Protocol**. 
+>
+> **The Architecture:**
+> 1. **Dynamic Key Generation:** Every exercise request sent by the doctor generates a unique, algorithmic key (e.g., `SQ15|20260101|RANDOMKEY`). 
+>    - `SQ15`: Encodes the Exercise Type and Target Amount.
+>    - `|20260101|`: Timestamp for session validation.
+>    - `RANDOMKEY`: A unique salt to prevent replay attacks.
+> 2. **Verification Engine:** The patient’s application (Rust) decodes this key upon arrival, initializing the AI model with specific parameters (e.g., 15 Squats).
+> 3. **Asynchronous Reporting:** Upon completion, the system would generate a `completed-exercises.json` file. This file acts as a local ledger, which is then parsed and transmitted back to the doctor via a secure SMTP bridge, using the unique Key as the primary identifier to ensure that only verified, doctor-requested sessions are logged.
 ---
 
 ## 👨‍💻 Developer
