@@ -1,4 +1,6 @@
-# 🏥 M.E.D.A | Medical Exercise Data Interface 🤖
+# 🏥 M.E.D.A | Medical Exercise Digital Interface 🤖
+
+*Turkish: Medikal Egzersiz Dijital Arayüzü — English name: MEDI*
 
 ![Rust](https://img.shields.io/badge/Rust-000000?style=for-the-badge&logo=rust&logoColor=white)
 ![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
@@ -30,16 +32,28 @@ The project is engineered as a multi-layered system, ensuring high stability and
 
 ## 📦 Installation
 
+The project has two apps:
+
+| Folder | App | Language |
+|---|---|---|
+| `MEDA-D/` | Doctor control panel | Python (CustomTkinter) |
+| `MEDA-H/` | Patient app with real-time exercise tracking | Rust (Slint UI + PyO3) and Python (MediaPipe) |
+
 1.  Clone the repository:
     ```bash
-    git clone [https://github.com/yourusername/MEDA.git](https://github.com/CSDC-K/MEDA.git)
+    git clone https://github.com/CSDC-K/M.E.D.A.git
+    cd M.E.D.A
     ```
-2.  Install Python dependencies:
+2.  Run the doctor app (Windows):
     ```bash
+    cd MEDA-D
     pip install -r requirements.txt
+    python main.py
     ```
-3.  Build and run the Rust application:
+3.  Run the patient app:
     ```bash
+    cd MEDA-H
+    pip install mediapipe opencv-python numpy
     cargo run --release
     ```
 
@@ -47,7 +61,7 @@ The project is engineered as a multi-layered system, ensuring high stability and
 
 ## 🗺️ Future Roadmap & Vision
 
-MEDA is currently in its **MVP (Minimum Viable Product)** phase. While the core AI detection is fully functional, the following architectural expansions are planned:
+MEDA is currently in its **MVP (Minimum Viable Product)** phase. I started it in summer 2025 and paused active development in January 2026 to focus on other projects. While the core AI detection is fully functional, the following architectural expansions are planned:
 
 ### ✉️ Automated Data Synchronization & Mail Integration
 > **[DEVELOPER VISION]:** 💡 To ensure data integrity between the physician and the patient, I designed a **Key-Based Verification Protocol**. 
@@ -63,7 +77,7 @@ MEDA is currently in its **MVP (Minimum Viable Product)** phase. While the core 
 
 ## 👨‍💻 Developer
 
-* **Kuzey** - *Lead Software Architect*
+* **Kuzey Ceylan** - *Sole developer (design, Rust, Python and UI)*
 * 🛠️ **Focus:** Rust Systems, Python AI, FFI, and Desktop UI Engineering.
 * 🎯 **Goal:** Engineering production-ready, safety-critical software.
 
